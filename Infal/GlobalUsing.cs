@@ -4,3 +4,8 @@ global using Kendo.Mvc.UI;
 global using Kendo.Mvc;
 global using Microsoft.AspNetCore.Mvc;
 global using Infal.Models;
+global using Infal.DB.Contaxt;
+global using Infal.Service.Abstraction;
+global using Infal.Service.Service;
+global using Microsoft.EntityFrameworkCore;
+global using Infal.DB.Dto;

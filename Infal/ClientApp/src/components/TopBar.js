@@ -33,24 +33,22 @@ export default function TopBar() {
                                                     <ul role="menu">
                                                         <li role="menuitem">
                                                             <Link className="dropdown-link" to="/account">
-                                                                {/* <img alt='olivia' src="http://www.w3.org/2000/svg" className="icon" /> */}
                                                                 <div className='p-2'>
                                                                     <i className='fa fa-clock fa-lg text-success'></i>
                                                                 </div>
                                                                 <div>
-                                                                    <span className="dropdown-link-title">Best of the day</span>
+                                                                    <span className="dropdown-link-title">Kendo Grid</span>
                                                                     <p>Shorts featured today by curators</p>
                                                                 </div>
                                                             </Link>
                                                         </li>
                                                         <li role="menuitem">
-                                                            <Link className="dropdown-link" to="#featured-streams">
-                                                                {/* <img alt='olivia' src="https://raw.githubusercontent.com/Evavic44/responsive-navbar-with-dropdown/main/assets/icons/fs.svg" className="icon" /> */}
+                                                            <Link className="dropdown-link" to="/formDemo">
                                                                 <div className='p-2'>
                                                                     <i className='fa fa-laptop fa-lg text-success'></i>
                                                                 </div>
                                                                 <div>
-                                                                    <span className="dropdown-link-title">Featured Streams</span>
+                                                                    <span className="dropdown-link-title">Form Demo</span>
                                                                     <p>Leading creatives livestreams</p>
                                                                 </div>
                                                             </Link>

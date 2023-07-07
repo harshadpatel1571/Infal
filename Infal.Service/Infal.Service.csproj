@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2023.2.606" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infal.DB\Infal.DB.csproj" />
+  </ItemGroup>
+
+</Project>

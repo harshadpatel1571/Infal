@@ -27,7 +27,7 @@ const categoryData = [
     },
 ];
 
-const DropDownCell = (props) => {
+function DropDownCell (props) {
 
     /**
     * Return null if this is a group header cell.

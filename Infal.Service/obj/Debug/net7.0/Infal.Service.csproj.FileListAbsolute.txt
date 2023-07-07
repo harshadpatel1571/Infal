@@ -1,0 +1,15 @@
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\bin\Debug\net7.0\Infal.Service.deps.json
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\bin\Debug\net7.0\Infal.Service.dll
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\bin\Debug\net7.0\Infal.Service.pdb
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\bin\Debug\net7.0\Infal.DB.dll
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\bin\Debug\net7.0\Infal.DB.pdb
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\Infal.Service.csproj.AssemblyReference.cache
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\Infal.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\Infal.Service.AssemblyInfoInputs.cache
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\Infal.Service.AssemblyInfo.cs
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\Infal.Service.csproj.CoreCompileInputs.cache
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\Infal.Service.csproj.CopyComplete
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\Infal.Service.dll
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\refint\Infal.Service.dll
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\Infal.Service.pdb
+D:\AvidClan-Projects\Infal\Infal\Infal.Service\obj\Debug\net7.0\ref\Infal.Service.dll

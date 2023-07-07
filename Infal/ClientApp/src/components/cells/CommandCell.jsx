@@ -2,7 +2,7 @@
 import { Button } from "@progress/kendo-react-buttons";
 import DataContext from '../../contexts/data-context';
 
-const MyCommandCell = props => {
+function MyCommandCell(props) {
     const currentContext = React.useContext(DataContext);
 
     const { dataItem } = props;
