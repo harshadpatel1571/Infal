@@ -1,11 +1,9 @@
 import '@progress/kendo-theme-default/dist/all.css'
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
 import { Button } from "@progress/kendo-react-buttons";
 import { mapTree } from "@progress/kendo-react-treelist";
 import { clone } from '@progress/kendo-react-common';
-import MyCommandCell from './cells/CommandCell';
-import DropDownCell from './cells/DropDownCell';
 import DataContext from '../contexts/data-context';
 import Axios from "axios";
 import { toDataSourceRequestString, translateDataSourceResultGroups } from '@progress/kendo-data-query';
@@ -34,13 +32,14 @@ export default function Account() {
     const addRecord = () => {
         console.log("Add Record");
         let newRecord = {
-            id: null,
-            empId: '',
-            name: '',
-            emailId: '',
-            mobileNo: '',
-            inEdit: true,
+            Id: null,
+            EmpId: null,
+            Name: null,
+            EmailId: null,
+            MobileNo: null,
+            inEdit: true
         }
+
         let newData = [...data];
         newData.unshift(newRecord);
         setData(newData)
@@ -49,7 +48,7 @@ export default function Account() {
     const handleItemChange = (event) => {
         console.log("handle Item Change");
         let newData = mapTree(data, 'items', item => {
-            if (event.dataItem.id === item.id) {
+            if (event.dataItem.Id === item.Id) {
                 item[event.field] = event.value;
             }
             return item;
@@ -58,8 +57,10 @@ export default function Account() {
     }
 
     const enterEdit = (dataItem) => {
+        console.log(dataItem);
         console.log("Edit Mode Call");
         let newData = mapTree(data, "items", (item) => {
+            console.log(item);
             dataItem.id === item.id ? item.inEdit = true : item.inEdit = false;
             return item;
         });
@@ -77,7 +78,7 @@ export default function Account() {
             take: dataState.take,
             skip: dataState.skip
         }
-        Axios.delete("https://localhost:44460/products", { data: { ...data, product: dataItem } }).then(
+        Axios.delete("https://localhost:44460/employee/delete", { data: { ...data, employee: dataItem } }).then(
             (response) => {
                 let parsedDataNew = mapTree(response.data.data, 'items', item => {
                     item.firstOrderedOn = new Date(item.firstOrderedOn);
@@ -104,7 +105,8 @@ export default function Account() {
             take: dataState.take,
             skip: dataState.skip
         }
-        Axios.put("https://localhost:44460/products", { ...data, product: dataItem }, headers).then(
+
+        Axios.put("https://localhost:44460/employee/saveGridData", { ...data, employee: dataItem }, headers).then(
             (response) => {
                 let parsedDataNew = mapTree(response.data.data, 'items', item => {
                     item.firstOrderedOn = new Date(item.firstOrderedOn);
@@ -120,7 +122,7 @@ export default function Account() {
     const discard = () => {
         let hasGroup = dataState.group.length > 0 ? true : false
         let newData = []
-        hasGroup ? newData = data.filter(item => item.value !== undefined) : newData = data.filter(item => item.id !== null)
+        hasGroup ? newData = data.filter(item => item.value !== undefined) : newData = data.filter(item => item.Id !== null)
         setData(newData);
     }
 
@@ -216,9 +218,58 @@ export default function Account() {
                     <GridColumn field='emailId' title='Email Id' />
                     <GridColumn field='mobileNo' title='Mobile No' />
 
-                    <GridColumn width="200px" cell={MyCommandCell} />
+                    <GridColumn width="200px" cell={CommandGenrate} />
                 </Grid>
             </DataContext.Provider>
         </>
     )
 }
+
+function CommandGenrate(props) {
+    const currentContext = React.useContext(DataContext);
+
+    const { dataItem } = props;
+    const isNewItem = dataItem.Id === null;
+
+    const inEdit = dataItem.inEdit;
+
+    const handleAddUpdate = React.useCallback(() => {
+        if (isNewItem) {
+            currentContext.add(dataItem)
+        } else {
+            currentContext.update(dataItem)
+        }
+    }, [currentContext, dataItem, isNewItem])
+
+    const handleDiscardCancel = React.useCallback(() => {
+        isNewItem ? currentContext.discard(dataItem) : currentContext.cancel()
+    }, [currentContext, dataItem, isNewItem])
+
+    const handleEdit = React.useCallback(() => {
+        currentContext.enterEdit(dataItem)
+    }, [currentContext, dataItem])
+
+    const handleDelete = React.useCallback(() => {
+        window.confirm("Confirm deleting: " + dataItem.name) && currentContext.remove(dataItem)
+    }, [currentContext, dataItem])
+
+    if (props.rowType === 'groupHeader') return null;
+
+    return inEdit ?
+        (<td className="k-command-cell">
+            <Button onClick={handleAddUpdate}>
+                {isNewItem ? "Add" : "Update"}
+            </Button>
+            <Button onClick={handleDiscardCancel}>
+                {isNewItem ? "Discard" : "Cancel"}
+            </Button>
+        </td>) :
+        (<td className="k-command-cell">
+            <Button themeColor="primary" onClick={handleEdit}>
+                Edit
+            </Button>
+            <Button onClick={handleDelete}>
+                Remove
+            </Button>
+        </td>);
+};

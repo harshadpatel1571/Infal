@@ -1,7 +1,8 @@
-﻿namespace Infal.DB.Dto;
+﻿namespace Infal.DB.DBModel;
 
-public sealed class EmployeeDto
+public sealed class Employee
 {
+    [Key]
     public int Id { get; set; }
 
     public string EmpId { get; set; } = string.Empty;

@@ -12,6 +12,11 @@
     position: static !important;
 }
 
+.k-menu:not(.k-context-menu) > .k-item {
+    font-size: 1rem !important;
+    color: var(--bs-navbar-active-color) !important;
+}
+
 .dropdown-menu {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
     margin-top: 0px !important;

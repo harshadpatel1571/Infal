@@ -3,6 +3,6 @@
 public class InfalContext : DbContext
 {
     public InfalContext(DbContextOptions options) : base(options) { }
-    public DbSet<EmployeeDto> Employee { get; set; }
+    public DbSet<Employee> Employee { get; set; }
 
 }

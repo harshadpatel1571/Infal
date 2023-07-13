@@ -11,8 +11,15 @@ public class GenericService<T> : IGenericService<T> where T : class
 
     public async Task Add(T entity)
     {
-        await _context.Set<T>().AddAsync(entity).ConfigureAwait(false);
-        await _context.SaveChangesAsync().ConfigureAwait(false);
+        try
+        {
+            await _context.Set<T>().AddAsync(entity).ConfigureAwait(false);
+            await _context.SaveChangesAsync().ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
     }
 
     public async Task Update(T entity)

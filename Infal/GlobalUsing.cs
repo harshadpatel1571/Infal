@@ -8,4 +8,5 @@ global using Infal.DB.Contaxt;
 global using Infal.Service.Abstraction;
 global using Infal.Service.Service;
 global using Microsoft.EntityFrameworkCore;
-global using Infal.DB.Dto;
+global using Infal.DB.DBModel;
+global using Infal.Service.Dto;
