@@ -2,14 +2,16 @@
 
 public class UnitOfWork : IUnitOfWork
 {
-    private InfalContext _context;
-    public UnitOfWork(InfalContext context)
+    private GenricDemoContext _context;
+    public UnitOfWork(GenricDemoContext context)
     {
         _context = context;
         EmployeeService = new EmployeeService(context);
+        MenueService = new MenueService(context);
     }
 
     public IEmployeeService EmployeeService { get; private set; }
+    public IMenueService MenueService { get; private set; }
 
     public void Dispose()
     {

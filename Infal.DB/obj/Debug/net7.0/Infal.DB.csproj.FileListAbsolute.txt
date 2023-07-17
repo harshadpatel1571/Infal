@@ -1,4 +1,5 @@
 D:\AvidClan-Projects\Infal\Infal\Infal.DB\bin\Debug\net7.0\Infal.DB.deps.json
+D:\AvidClan-Projects\Infal\Infal\Infal.DB\bin\Debug\net7.0\Infal.DB.runtimeconfig.json
 D:\AvidClan-Projects\Infal\Infal\Infal.DB\bin\Debug\net7.0\Infal.DB.dll
 D:\AvidClan-Projects\Infal\Infal\Infal.DB\bin\Debug\net7.0\Infal.DB.pdb
 D:\AvidClan-Projects\Infal\Infal\Infal.DB\obj\Debug\net7.0\Infal.DB.csproj.AssemblyReference.cache
@@ -9,4 +10,5 @@ D:\AvidClan-Projects\Infal\Infal\Infal.DB\obj\Debug\net7.0\Infal.DB.csproj.CoreC
 D:\AvidClan-Projects\Infal\Infal\Infal.DB\obj\Debug\net7.0\Infal.DB.dll
 D:\AvidClan-Projects\Infal\Infal\Infal.DB\obj\Debug\net7.0\refint\Infal.DB.dll
 D:\AvidClan-Projects\Infal\Infal\Infal.DB\obj\Debug\net7.0\Infal.DB.pdb
+D:\AvidClan-Projects\Infal\Infal\Infal.DB\obj\Debug\net7.0\Infal.DB.genruntimeconfig.cache
 D:\AvidClan-Projects\Infal\Infal\Infal.DB\obj\Debug\net7.0\ref\Infal.DB.dll

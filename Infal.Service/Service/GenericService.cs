@@ -2,9 +2,9 @@
 
 public class GenericService<T> : IGenericService<T> where T : class
 {
-    protected readonly InfalContext _context;
+    protected readonly GenricDemoContext _context;
 
-    public GenericService(InfalContext context)
+    public GenericService(GenricDemoContext context)
     {
         _context = context;
     }

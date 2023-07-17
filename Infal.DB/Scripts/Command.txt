@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=.;Database=GenricDemo;MultipleActiveResultSets=true;Trusted_Connection=true;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -context "GenricDemoContext" -Force

@@ -3,5 +3,6 @@
 public interface IUnitOfWork : IDisposable
 {
     IEmployeeService EmployeeService { get; }
+    IMenueService MenueService { get; }
     int Save();
 }

@@ -1,3 +1,4 @@
 ﻿global using Microsoft.EntityFrameworkCore;
-global using Infal.DB.DBModel;
 global using System.ComponentModel.DataAnnotations;
+global using System;
+global using System.Collections.Generic;

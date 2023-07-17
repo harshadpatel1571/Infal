@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Infal.Models;
+﻿namespace Infal.Models;
 
 public class CategoryViewModel
 {
