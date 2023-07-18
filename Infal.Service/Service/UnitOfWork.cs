@@ -2,8 +2,8 @@
 
 public class UnitOfWork : IUnitOfWork
 {
-    private GenricDemoContext _context;
-    public UnitOfWork(GenricDemoContext context)
+    private InfalDbContext _context;
+    public UnitOfWork(InfalDbContext context)
     {
         _context = context;
         EmployeeService = new EmployeeService(context);

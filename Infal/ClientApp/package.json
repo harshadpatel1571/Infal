@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@progress/kendo-react-grid": "^5.14.1",
+    "@progress/kendo-react-indicators": "^5.14.1",
     "@progress/kendo-react-treelist": "^5.14.1",
     "@progress/kendo-react-upload": "^5.14.1",
     "@progress/kendo-theme-default": "^6.5.0",

@@ -2,7 +2,7 @@
 
 class EmployeeService : GenericService<Employee>, IEmployeeService
 {
-    public EmployeeService(GenricDemoContext context) : base(context)
+    public EmployeeService(InfalDbContext context) : base(context)
     {
     }
 }

@@ -48,3 +48,14 @@ a {
 .menuHead {
     margin-left: 1rem;
 }
+
+/* .k-animation-container{
+    left: 0px !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    top: 60.425px !important;
+} */
+
+.loaderTop{
+    margin-top: 250px;
+}

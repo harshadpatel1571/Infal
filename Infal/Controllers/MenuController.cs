@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Infal.Service.Helper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,18 +20,30 @@ namespace Infal.Controllers
         public async Task<ResponseDto> Get()
         {
             var response = new ResponseDto();
-            var listData = await _unitOfWork.MenueService.GetAllMenue();
-
-            if (listData.Count() > 0)
+            try
             {
-                response.Status = true;
-                response.Message = "Recored Found.";
-                response.Data = listData;
+                var listData = await _unitOfWork.MenueService.GetAllMenue();
+
+                if (listData.Count() > 0)
+                {
+                    response.Status = true;
+                    response.Message = "Recored Found.";
+                    response.StatusCode = (int)StatusCodeEnum.Success;
+                    response.Data = listData;
+                }
+                else
+                {
+                    response.Status = false;
+                    response.Message = "No Recored Found.";
+                    response.StatusCode = (int)StatusCodeEnum.NoDataFound;
+                    response.Data = null;
+                }
             }
-            else
+            catch (Exception ex)
             {
                 response.Status = false;
-                response.Message = "No Recored Found.";
+                response.Message = ex.Message;
+                response.StatusCode = (int)StatusCodeEnum.Exception;
                 response.Data = null;
             }
 

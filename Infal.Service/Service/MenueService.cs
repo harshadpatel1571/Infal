@@ -2,7 +2,7 @@
 
 class MenueService : GenericService<Menue>, IMenueService
 {
-    public MenueService(GenricDemoContext context) : base(context)
+    public MenueService(InfalDbContext context) : base(context)
     {
     }
 
