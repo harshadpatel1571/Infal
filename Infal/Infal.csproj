@@ -16,7 +16,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2023.2.606" />
   </ItemGroup>
 
   <ItemGroup>

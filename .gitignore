@@ -34,3 +34,4 @@
 /Infal.Service/obj/Debug/net7.0/Infal.Service.csproj.CoreCompileInputs.cache
 /Infal.Service/obj/Debug/net7.0/Infal.Service.csproj.AssemblyReference.cache
 /.vs/Infal/FileContentIndex/20e043c5-aa2d-4680-b46e-3c3c1ff5a50f.vsidx
+/Infal/ClientApp/.env.development.local

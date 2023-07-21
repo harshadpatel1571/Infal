@@ -154,70 +154,70 @@ public class EmployeeController : Controller
 
     }
 
-    [HttpGet]
-    [Route("bindGrid")]
-    public async Task<DataSourceResult> BindGrid([DataSourceRequest] DataSourceRequest request)
-    {
-        var data = await _unitOfWork.EmployeeService.GetAll();
-        return data.ToDataSourceResult(request);
-    }
+    //[HttpGet]
+    //[Route("bindGrid")]
+    //public async Task<DataSourceResult> BindGrid([DataSourceRequest] DataSourceRequest request)
+    //{
+    //    var data = await _unitOfWork.EmployeeService.GetAll();
+    //    return data.ToDataSourceResult(request);
+    //}
 
-    [HttpPut]
-    [Route("saveGridData")]
-    public async Task<JsonResult> SaveGridData([FromBody] PostEmpModel postModel)
-    {
-        var dsRequest = new DataSourceRequest();
-        dsRequest.Take = postModel.Take;
-        dsRequest.Skip = postModel.Skip;
-        dsRequest.PageSize = postModel.Take;
-        // we check if this is an existing or a new item
+    //[HttpPut]
+    //[Route("saveGridData")]
+    //public async Task<JsonResult> SaveGridData([FromBody] PostEmpModel postModel)
+    //{
+    //    var dsRequest = new DataSourceRequest();
+    //    dsRequest.Take = postModel.Take;
+    //    dsRequest.Skip = postModel.Skip;
+    //    dsRequest.PageSize = postModel.Take;
+    //    // we check if this is an existing or a new item
 
-        try
-        {
-            var model = new Employee
-            {
-                Id = postModel.Employee.Id ?? 0,
-                EmailId = postModel.Employee.EmailId,
-                EmpId = postModel.Employee.EmpId,
-                MobileNo = postModel.Employee.MobileNo,
-                Name = postModel.Employee.Name
-            };
-            await _unitOfWork.EmployeeService.Add(model);
-        }
-        catch (Exception ex)
-        {
+    //    try
+    //    {
+    //        var model = new Employee
+    //        {
+    //            Id = postModel.Employee.Id ?? 0,
+    //            EmailId = postModel.Employee.EmailId,
+    //            EmpId = postModel.Employee.EmpId,
+    //            MobileNo = postModel.Employee.MobileNo,
+    //            Name = postModel.Employee.Name
+    //        };
+    //        await _unitOfWork.EmployeeService.Add(model);
+    //    }
+    //    catch (Exception ex)
+    //    {
 
-        }
+    //    }
 
-        if (!string.IsNullOrEmpty(postModel.Filter))
-        {
-            dsRequest.Filters = FilterDescriptorFactory.Create(postModel.Filter);
-        }
+    //    if (!string.IsNullOrEmpty(postModel.Filter))
+    //    {
+    //        dsRequest.Filters = FilterDescriptorFactory.Create(postModel.Filter);
+    //    }
 
-        if (!string.IsNullOrEmpty(postModel.Sort))
-        {
-            dsRequest.Sorts = DataSourceDescriptorSerializer.Deserialize<SortDescriptor>(postModel.Sort);
-        }
+    //    if (!string.IsNullOrEmpty(postModel.Sort))
+    //    {
+    //        dsRequest.Sorts = DataSourceDescriptorSerializer.Deserialize<SortDescriptor>(postModel.Sort);
+    //    }
 
-        if (!string.IsNullOrEmpty(postModel.Group))
-        {
-            dsRequest.Groups = DataSourceDescriptorSerializer.Deserialize<GroupDescriptor>(postModel.Group);
-        }
+    //    if (!string.IsNullOrEmpty(postModel.Group))
+    //    {
+    //        dsRequest.Groups = DataSourceDescriptorSerializer.Deserialize<GroupDescriptor>(postModel.Group);
+    //    }
 
-        var data = await _unitOfWork.EmployeeService.GetAll();
+    //    var data = await _unitOfWork.EmployeeService.GetAll();
 
-        var result = Json(data.ToDataSourceResult(dsRequest));
+    //    var result = Json(data.ToDataSourceResult(dsRequest));
 
-        return result;
-    }
+    //    return result;
+    //}
 
-    public class PostEmpModel
-    {
-        public EmployeeDto? Employee { get; set; }
-        public int Take { get; set; }
-        public int Skip { get; set; }
-        public string? Sort { get; set; }
-        public string? Filter { get; set; }
-        public string? Group { get; set; }
-    }
+    //public class PostEmpModel
+    //{
+    //    public EmployeeDto? Employee { get; set; }
+    //    public int Take { get; set; }
+    //    public int Skip { get; set; }
+    //    public string? Sort { get; set; }
+    //    public string? Filter { get; set; }
+    //    public string? Group { get; set; }
+    //}
 }

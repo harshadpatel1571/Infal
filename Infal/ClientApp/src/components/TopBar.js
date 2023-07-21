@@ -1,55 +1,166 @@
 import '@progress/kendo-theme-default/dist/all.css'
-import React, { useState, useEffect, lazy } from 'react';
+//import React, { useState, useEffect, lazy } from 'react';
+import React, { lazy } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, MenuItem } from "@progress/kendo-react-layout";
-import Axios from "axios";
-import { EndPoints } from '../EndPoints';
+// import Axios from "axios";
+// import { EndPoints } from '../EndPoints';
 
 const Loading = lazy(() => import('./Loading'));
 
 export default function TopBar() {
 
-    const [items, setItems] = useState([]);
+    //const [items, setItems] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        console.log(EndPoints.GetMenuList);
-        // this hook call when page load and fetch data using async
-        async function fetchMenue() {
-            const response = await Axios.get(EndPoints.GetMenuList);
-            if (response.data.statusCode === 500) {
-                navigate("/error500");
-            }
-            else if (response.data.data != null) {
-                setItems(response.data.data);
-            }
-        }
-        fetchMenue();
-    }, []);
+    // useEffect(() => {
+    //     console.log(EndPoints.GetMenuList);
+    //     // this hook call when page load and fetch data using async
+    //     async function fetchMenue() {
+    //         const response = await Axios.get(EndPoints.GetMenuList);
+    //         if (response.data.statusCode === 500) {
+    //             navigate("/error500");
+    //         }
+    //         else if (response.data.data != null) {
+    //             setItems(response.data.data);
+    //         }
+    //     }
+    //     fetchMenue();
+    // }, []);
+
+    let items = [
+        {
+            name: "Dashboard",
+            cssClass: "nav-item px-3",
+            url: "/",
+            items: null
+        },
+        {
+            name: "Account",
+            cssClass: "nav-item dropdown px-3",
+            items: [
+                {
+                    name: "Account-1",
+                    cssClass: "dropdown-link",
+                    items: [
+                        {
+                            name: "Kendo Grid",
+                            cssClass: "dropdown-link",
+                            icon: "fa-clock",
+                            description: "this is test",
+                            url: "/account",
+                            items: null
+                        },
+                        {
+                            name: "Form Demo",
+                            cssClass: "dropdown-link",
+                            icon: "fa-book",
+                            description: "this is test",
+                            url: "/formDemo",
+                            items: null
+                        },
+                        {
+                            name: "Login Demo",
+                            cssClass: "dropdown-link",
+                            icon: "fa-pen",
+                            description: "this is test",
+                            url: "/login",
+                            items: null
+                        },
+                        {
+                            name: "Creative Feed",
+                            cssClass: "dropdown-link",
+                            icon: "fa-clock",
+                            description: "this is test",
+                            url: null,
+                            items: null
+                        },
+                    ],
+                },
+                {
+                    name: "Account-2",
+                    cssClass: "dropdown-link",
+                    items: [
+                        {
+                            name: "Featured Streams",
+                            cssClass: "dropdown-link",
+                            icon: "fa-laptop",
+                            description: "Leading creatives livestreams",
+                            url: null,
+                            items: null
+                        },
+                        {
+                            name: "Best of the day",
+                            cssClass: "dropdown-link",
+                            icon: "fa-book",
+                            description: "Shorts featured today by curators",
+                            url: null,
+                            items: null
+                        },
+                    ],
+                },
+                {
+                    name: "Account-3",
+                    cssClass: "dropdown-link",
+                    items: [
+                        {
+                            name: "Subscriptions",
+                            cssClass: "dropdown-link",
+                            icon: "fa-clock",
+                            description: "Gain exclusive access",
+                            url: null,
+                            items: null
+                        },
+                    ],
+                },
+                {
+                    name: "Account-4",
+                    cssClass: "dropdown-link",
+                    items: [
+                        {
+                            name: "Account Streem",
+                            cssClass: "dropdown-link",
+                            icon: "fa-laptop",
+                            description: "Leading creatives livestreams",
+                            url: null,
+                            items: null
+                        },
+                        {
+                            name: "Best of Account",
+                            cssClass: "dropdown-link",
+                            icon: "fa-book",
+                            description: "Shorts featured today by curators",
+                            url: null,
+                            items: null
+                        },
+                    ],
+                },
+            ],
+        },
+    ];
 
     const ItemRender = (props) => {
 
         // find the menu by name from the menu list.
         let menuItem = items.find(x => x.name === props.item.text);
-        let btCol = 12 / menuItem.menuList.length;
-
+        let btCol = 12 / menuItem.items.length;
         return (
 
             // create menu UI baised on menu item and nested list.
             <div className='container p-2'>
                 <div className='row'>
                     {
-                        menuItem.menuList.map(item =>
-                            <div className={'col-sm-' + btCol + ' p-2'} key={item.name}>
+                        menuItem.items.map(item =>
+                            <div className={'col-sm-' + btCol + ' p-2'} key={"div" + item.name}>
                                 <h6 className='text-success menuHead'>{item.name}</h6>
                                 <div id="dropdown1" className="dropdown">
                                     <ul role="menu">
                                         {
-                                            item.menuList.length === 0 ? (
+                                            item.items === undefined || item.items === null ? (
                                                 null
                                             ) : (
-                                                item.menuList.map(childitem =>
-                                                    <li role="menuitem" key={'li' + childitem.id}>
+                                                item.items.map(childitem =>
+                                                    <li role="menuitem" key={'li' + childitem.name}>
                                                         <Link className="dropdown-link" to={childitem.url === null ? "/error400" : childitem.url}>
                                                             <div className='p-2'>
                                                                 <i className={'fa ' + childitem.icon + ' fa-lg text-success'}></i>
@@ -104,7 +215,7 @@ export default function TopBar() {
                                 <Menu onSelect={onSelect}>
                                     {
                                         items.map(item => (
-                                            item.menuList.length === 0 ? (
+                                            item.items === null ? (
                                                 <MenuItem text={item.name} key={item.name} data={{
                                                     route: { item },
                                                 }} />
